@@ -73,3 +73,32 @@ class InternalLinkRequest(InlineContent):
         self.target_topic = target_topic
         self.source_number = source_number
         self.tid = tid
+
+
+class TableCell:
+    def __init__(
+        self,
+        children: list[InlineContent],
+        is_header: bool = False
+    ):
+        self.children = children
+        self.is_header = is_header
+
+
+class TableRow:
+    def __init__(self, cells: list[TableCell]):
+        self.cells = cells
+
+
+class Table(ContentBlock):
+    def __init__(
+        self,
+        header_rows: list[TableRow],
+        body_rows: list[TableRow]
+    ):
+        self.header_rows = header_rows
+        self.body_rows = body_rows
+
+
+class LineBreak(InlineContent):
+    pass        
