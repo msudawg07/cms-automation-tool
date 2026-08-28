@@ -56,8 +56,8 @@ class Emphasis(InlineContent):
 
 
 class ExternalLink(InlineContent):
-    def __init__(self, text: str, href: str):
-        self.text = text
+    def __init__(self, children: list[InlineContent], href: str):
+        self.children = children
         self.href = href
 
 
