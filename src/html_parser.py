@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from models import Document, Heading
+from models import Document, Heading, Paragraph, Text
 
 def parse_html(html: str) -> Document:
   soup = BeautifulSoup(html, "html.parser")
@@ -14,6 +14,9 @@ def parse_html(html: str) -> Document:
       level = int(element.name[1])
       heading = Heading(text=element.get_text(), level=level)
       blocks.append(heading)
+    elif element.name == "p":
+      is_attribution = "attribution" in element.get("class", [])
+      blocks.append(Paragraph(children=[Text(element.get_text())], is_attribution=is_attribution))
 
   return Document(blocks=blocks)
 

@@ -5,11 +5,7 @@ class ContentBlock:
 
 
 class Paragraph(ContentBlock):
-    def __init__(
-        self,
-        children: list[InlineContent],
-        is_attribution: bool = False
-    ):
+    def __init__(self, children: list[InlineContent], is_attribution: bool = False):
         self.children = children
         self.is_attribution = is_attribution
 
@@ -22,7 +18,7 @@ class Heading(ContentBlock):
 
 class ListItem:
     def __init__(self, children: list[InlineContent]):
-        self.children = children      
+        self.children = children
 
 
 class ListBlock(ContentBlock):
@@ -33,7 +29,7 @@ class ListBlock(ContentBlock):
 
 class Document:
     def __init__(self, blocks: list[ContentBlock]):
-        self.blocks = blocks  
+        self.blocks = blocks
 
 
 class InlineContent:
@@ -76,11 +72,7 @@ class InternalLinkRequest(InlineContent):
 
 
 class TableCell:
-    def __init__(
-        self,
-        children: list[InlineContent],
-        is_header: bool = False
-    ):
+    def __init__(self, children: list[InlineContent], is_header: bool = False):
         self.children = children
         self.is_header = is_header
 
@@ -91,14 +83,10 @@ class TableRow:
 
 
 class Table(ContentBlock):
-    def __init__(
-        self,
-        header_rows: list[TableRow],
-        body_rows: list[TableRow]
-    ):
+    def __init__(self, header_rows: list[TableRow], body_rows: list[TableRow]):
         self.header_rows = header_rows
         self.body_rows = body_rows
 
 
 class LineBreak(InlineContent):
-    pass        
+    pass
